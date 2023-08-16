@@ -39,39 +39,65 @@ class Navbar extends Component {
             navbarLogo = siteTitle;
         }
 
-        return <nav class="navbar navbar-main">
-            <div class="container navbar-container">
-                <div class="navbar-brand justify-content-center">
-                    <a class="navbar-item navbar-logo" href={siteUrl}>
-                        {navbarLogo}
-                    </a>
-                </div>
-                <div class="navbar-menu">
-                    {Object.keys(menu).length ? <div class="navbar-start">
-                        {Object.keys(menu).map(name => {
-                            const item = menu[name];
-                            return <a class={classname({ 'navbar-item': true, 'is-active': item.active })} href={item.url}>{name}</a>;
-                        })}
-                    </div> : null}
-                    <div class="navbar-end">
-                        {Object.keys(links).length ? <Fragment>
-                            {Object.keys(links).map(name => {
-                                const link = links[name];
-                                return <a class="navbar-item" target="_blank" rel="noopener" title={name} href={link.url}>
-                                    {link.icon ? <i class={link.icon}></i> : name}
-                                </a>;
-                            })}
-                        </Fragment> : null}
-                        {showToc ? <a class="navbar-item is-hidden-tablet catalogue" title={tocTitle} href="javascript:;">
-                            <i class="fas fa-list-ul"></i>
-                        </a> : null}
-                        {showSearch ? <a class="navbar-item search" title={searchTitle} href="javascript:;">
-                            <i class="fas fa-search"></i>
-                        </a> : null}
-                    </div>
-                </div>
+        return <nav
+        class="navbar navbar-main"
+        data-target="navMenu"
+        aria-expanded="false"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <img src="/b.png" />
+          </a>
+  
+          <a
+            role="button"
+            class="navbar-burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasicExample"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+  
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item is-active">主页</a>
+            <a
+              class="navbar-item"
+              href="https://afdian.net/a/travellings"
+              target="_blank"
+              >赞助</a
+            >
+            <a
+              class="navbar-item"
+              href="https://blog.travellings.cn"
+              target="_blank"
+              >博客</a
+            >
+          </div>
+  
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-primary" href="/go.html">
+                  <strong>开始穿梭</strong>
+                </a>
+                <a
+                  class="button is-light"
+                  href="https://github.com/travellings-link/travellings"
+                  target="_blank"
+                  >加入开往</a
+                >
+              </div>
             </div>
-        </nav>;
+          </div>
+        </div>
+      </nav>;
     }
 }
 
